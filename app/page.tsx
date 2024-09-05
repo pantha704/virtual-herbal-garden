@@ -1,16 +1,14 @@
-import { SessionProvider } from "../components/SessionProvider";
-import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
-    <SessionProvider>
-      {({ session }: any) => (
-        <div className="min-h-screen">
-          <Navbar session={session} />
-          <HeroSection />
-        </div>
-      )}
-    </SessionProvider>
+    <div className="min-h-screen">
+      <Navbar session={session} />
+      <HeroSection />
+    </div>
   );
 }

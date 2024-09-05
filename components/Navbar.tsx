@@ -4,6 +4,8 @@ import { signIn, signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = ({ session }: any) => {
+  console.log(session);
+
   return (
     <nav className="flex justify-between items-center py-4 px-8 bg-black text-white">
       <div className="font-bold text-lg">{/* Add logo or text */}</div>
